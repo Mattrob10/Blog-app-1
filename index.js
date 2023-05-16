@@ -12,6 +12,7 @@ app.use(morgan('dev'))
 
 
 mongoose.set('strictQuery', true);
+app.use(express.static(path.join(__dirname, "client", "build")))
 mongoose.connect(
  process.env.MONGO_URL,
   () => console.log('Connected to the DB')
@@ -20,7 +21,7 @@ mongoose.connect(
 app.use('/auth', require('./routes/authRouter.js'))
 // app.use('/api', expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] })) // req.user
 app.use('/api/blog', require('./routes/blogRouter.js'))
-app.use(express.static(path.join(__dirname, "client", "build")))
+
 
 app.use((err, req, res, next) => {
   console.log(err)
