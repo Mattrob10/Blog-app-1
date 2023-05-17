@@ -124,16 +124,21 @@ export default function UserProvider(props){
  }
 
  function deleteBlog(blogId) {
-  userAxios
-    .delete(`/api/blog/${blogId}`)
-    .then((res) => {
-      setUserState((prevState) => ({
-        ...prevState,
-        blogs: prevState.blogs.filter((blog) => blog._id !== blogId),
-      }));
-    })
-    .catch((err) => console.log(err));
+  const confirmDelete = window.confirm("Are you sure you want to delete this blog?");
+
+  if (confirmDelete) {
+    userAxios
+      .delete(`/api/blog/${blogId}`)
+      .then((res) => {
+        setUserState((prevState) => ({
+          ...prevState,
+          blogs: prevState.blogs.filter((blog) => blog._id !== blogId),
+        }));
+      })
+      .catch((err) => console.log(err));
+  }
 }
+
 
 //EDIT BLOG
 function editBlog(blogId, newBlog) {

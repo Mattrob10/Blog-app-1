@@ -8,6 +8,8 @@ export default function AuthForm(props) {
     errMsg,
     showConfirmPassword = true,
     inputs: { username, password, confirmPassword },
+    memberLoginElement,
+    memberRegisterElement,
   } = props;
 
   return (
@@ -37,6 +39,8 @@ export default function AuthForm(props) {
       )}
       <button className="form-btn">{btnText}</button>
       <p id="errMsg">{errMsg}</p>
+      {memberLoginElement && memberLoginElement}
+      {memberRegisterElement && memberRegisterElement}
     </form>
   );
 }

@@ -27,15 +27,15 @@ html{
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  justify-content: flex-start;
+  margin: 0 auto;
+  height: 92vh;
 }
 
 .auth-container h1{
   font-size: 60px;
   margin-block: 60px;
   color: #27486B;
-
-  
 }
 
 #auth-form{
@@ -46,15 +46,14 @@ html{
   border: 1px solid #27486B;
   border-radius: 5px;
   max-width: 600px;
-  height: 320px;
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  height: 420px;
+  /* transform: translate(-50%, -50%); */
   background-color: #27486B;
   color: #fb8500;
   box-shadow: 0 0 1px #e0e2e4;
   padding: 5px 15px;
+  margin-top: 50px;
+  
 }
 
 #auth-form input{
@@ -72,8 +71,6 @@ html{
   display: flex;
   justify-content: center;
   align-content: center;
-  position: fixed;
-  bottom: 10%;
   background-color: transparent;
   color: #e5e5e5;
   font-weight: 500;
@@ -98,19 +95,15 @@ html{
 }
 
 #member {
-  display: flex;
-  justify-content: center;
-  margin-block: .3rem;
-  font-size: 30px;
-  color: #27486B;
-  position: fixed;
-  top: 30%;
+  margin-block: .5rem;
+  font-size: 18px;
+  color: #e1e4e8;
+  
 }
 
 #toggle-msg {
   cursor: pointer;
-  margin-left: 20px;
-  color: #27486B;
+  color: #ececec;
   font-weight: bold;
   border: 3px solid #27486B;
   padding: 0 5px;
@@ -283,7 +276,7 @@ html{
   margin: 10px;
 }
 
-#blog-form input {
+#blog-form input{
   margin-top: 20px;
   border-radius: 5px;
   height: 35px;
@@ -294,14 +287,25 @@ html{
   box-shadow: 0 0 10px #27486B;
 }
 
-#blog-form input:focus{
+#blog-form input:focus, #blog-form textarea:focus{
   background-color: #27486B;
   color: #e5e5e5;
   box-shadow: 0 0 10px #27486B;
 }
 
-#blog-form input::placeholder{
+#blog-form input::placeholder, #blog-form textarea::placeholder{
   color: #27486B;
+}
+
+#blog-form textarea {
+  margin-top: 20px;
+  border-radius: 5px;
+  height: 105px;
+  padding: 5px 10px;
+  align-content: center;
+  background-color: #e5e5e5d9;
+  border-style: none;
+  box-shadow: 0 0 10px #27486B; 
 }
 
 #add-blog {
@@ -504,7 +508,7 @@ html{
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 90%;
   height: 100%; 
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;

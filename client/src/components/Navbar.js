@@ -7,7 +7,9 @@ export default function Navbar(props) {
 
   return (
     <div className='navbar'>
-      <div className='logo'><img src={logo} alt=""/></div>
+      <div className='logo'><a href='/public'><img src={logo} alt=""/></a>
+    </div>
+
       {token && (
         <div className='profile-links'>
           <Link to='/' id="public-link" className={location.pathname === '/' ? 'active' : ''}>Profile</Link>

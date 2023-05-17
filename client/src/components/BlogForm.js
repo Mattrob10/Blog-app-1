@@ -35,7 +35,7 @@ export default function BlogForm(props){
         onChange={handleChange} 
         required={true}
         placeholder="Title"/>
-      <input 
+      <textarea 
         type="text" 
         name="description" 
         value={description} 
@@ -47,7 +47,7 @@ export default function BlogForm(props){
         name="imgUrl" 
         value={imgUrl} 
         onChange={handleChange}
-        placeholder="Image Url"/>
+        placeholder="Paste Image URL here"/>
       <button id='add-blog'><IoIosAddCircle/></button>
     </form>
   )
