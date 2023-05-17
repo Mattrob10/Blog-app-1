@@ -57,6 +57,7 @@ export default function Public() {
           />
         ))}
       </div>
+      {totalPages > 1 && (
       <div className='public-pagination'>
         <button
           onClick={() => handlePageClick(currentPage - 1)}
@@ -84,6 +85,7 @@ export default function Public() {
           <AiOutlineRight />
         </button>
       </div>
+      )}
     </div>
   );
 }

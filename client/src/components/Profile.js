@@ -6,7 +6,7 @@ import { UserContext } from '../context/UserProvider.js';
 export default function Profile() {
   const { user: { username, _id}, addBlog, blogs } = useContext(UserContext);
 
-  const userBlogs = blogs.filter(blog => blog.user === _id);
+  const userBlogs = Array.isArray(blogs) ? blogs.filter(blog => blog.user === _id) : [];
 
 
   
