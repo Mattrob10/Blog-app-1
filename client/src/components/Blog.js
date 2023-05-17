@@ -4,7 +4,7 @@ import { FiEdit, FiTrash } from 'react-icons/fi';
 // import CommentSection from "./CommentSection";
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 // import blog from '../../../models/blog';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 export default function Blog(props) {
   const {
     title,
