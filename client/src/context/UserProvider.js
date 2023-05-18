@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 export const UserContext = React.createContext()
 
 const userAxios = axios.create()
@@ -19,7 +20,8 @@ export default function UserProvider(props){
   }
 
   const [userState, setUserState] = useState(initState)
-
+  const navigate = useNavigate();
+  
   useEffect(() => {
     getUserBlogs()
   }, [])
@@ -65,15 +67,19 @@ export default function UserProvider(props){
     .catch(err => handleAuthErr(err.response.data.errMsg))
   }
 
- function logout(){
-  localStorage.removeItem("token")
-  localStorage.removeItem("user")
-  setUserState({
-    user: {},
-     token: "",
-      blogs: []
-  })
- }
+  function logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setUserState({
+      user: {},
+      token: '',
+      blogs: [],
+    });
+
+    // Redirect to the public page
+    navigate('/public');
+  }
+
 
  function handleAuthErr(errMsg){
   setUserState(prevState => ({

@@ -606,6 +606,10 @@ html{
   margin-bottom: 20px;
 }
 
+.public-pagination{
+  margin-bottom: 40px;
+}
+
 .public-pagination-btn{
   font-size: 20px;
   display: inline;
