@@ -17,7 +17,7 @@ html{
   font-family: 'Inter', sans-serif;
   background-image: 100%;
   width: 100vw;
-
+  min-height: 1311px;
  
 }
 
@@ -381,6 +381,7 @@ html{
 #blog-img img {
   height: 100%;
   width: 100%;
+  min-height: 400px;
   object-fit: cover;
   border-radius: 10px;
 
@@ -687,7 +688,8 @@ html{
 
 .blog-details-img img{
   max-width: 100%;
-    height: auto;
+    max-height: 500px;
+
 }
 
 /* FOOTER  */
@@ -788,7 +790,10 @@ html{
   }
 
   #blog-img{
-    margin: 5px 10px;
+    width: 300px; 
+    min-height: 200px; 
+    object-fit: cover; 
+    margin: 5px 10px; 
   }
   .blog-description {
     max-width: 270px;
