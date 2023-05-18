@@ -112,6 +112,7 @@ export default function UserProvider(props){
   .catch(err => console.log(err.response.data.errMsg))
 }
 
+
  function addBlog(newBlog){
   userAxios.post("/api/blog", newBlog)
   .then(res => {

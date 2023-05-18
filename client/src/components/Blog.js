@@ -1,10 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { UserContext } from '../context/UserProvider';
 import { FiEdit, FiTrash } from 'react-icons/fi';
-// import CommentSection from "./CommentSection";
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-// import blog from '../../../models/blog';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 export default function Blog(props) {
   const {
     title,
@@ -17,6 +16,7 @@ export default function Blog(props) {
     likes,
     hideCreatedBlog,
   } = props;
+  
   const {
     deleteBlog,
     editBlog,
@@ -24,24 +24,6 @@ export default function Blog(props) {
     unlikeBlog,
     user: { _id },
   } = useContext(UserContext);
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    if (isModalOpen) {
-      document.body.classList.add('modal-open');
-    } else {
-      document.body.classList.remove('modal-open');
-    }
-  }, [isModalOpen]);
-
-  function openModal() {
-    setIsModalOpen(true);
-  }
-
-  function closeModal() {
-    setIsModalOpen(false);
-  }
 
   function handleDelete() {
     deleteBlog(blog_id);
@@ -87,9 +69,7 @@ export default function Blog(props) {
           ) : (
             <>
               {description.slice(0, 230)}...
-              <button className="read-more" onClick={openModal}>
-                Read more...
-              </button>
+             
             </>
           )}
         </h3>
@@ -108,11 +88,12 @@ export default function Blog(props) {
             <button onClick={handleDelete} className="trash-btn">
               <FiTrash />
             </button>
-            {/* <div className='open-blog'><Link to={`/blog/${blog_id}`}>more info</Link></div> */}
+            <button className="read-more">
+                <Link to={`/blog/${blog_id}`}>Read more...</Link>
+              </button>
           </div>
         )}
       </div>
-      {/* <CommentSection /> */}
       {likes.some((item) => item.user === _id) ? (
         <div className="blog-votes">
           <button onClick={() => unlikeBlog(blog_id)}>
@@ -126,17 +107,6 @@ export default function Blog(props) {
             <AiOutlineHeart />
             <span>{likes.length}</span>
           </button>
-        </div>
-      )}
-      {isModalOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={closeModal}>
-              &times;
-            </span>
-            <h2 className='modal-title'>{title}</h2>
-            <p className='modal-description'>{description}</p>
-          </div>
         </div>
       )}
     </div>

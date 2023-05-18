@@ -17,6 +17,8 @@ html{
   font-family: 'Inter', sans-serif;
   background-image: 100%;
   width: 100vw;
+ 
+ 
 }
 
 .icon {
@@ -29,7 +31,8 @@ html{
   align-items: center;
   justify-content: flex-start;
   margin: 0 auto;
-  height: 92vh;
+  /* height: 92vh; */
+  height: 92.5vh;
 }
 
 .auth-container h1{
@@ -52,7 +55,7 @@ html{
   color: #fb8500;
   box-shadow: 0 0 1px #e0e2e4;
   padding: 5px 15px;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   
 }
 
@@ -80,7 +83,7 @@ html{
   height: 2rem;
   border: #8ecae6;
   cursor: pointer;
-  margin-top: 30px;
+  margin: 30px;
   border-radius: 5px;
   box-shadow: 0 0 10px #e5e5e58b;
   border: 1px solid #e5e5e5;
@@ -563,8 +566,6 @@ html{
   color: #555;
 }
 
-
-
 /* Public */
 .public {
   display: flex;
@@ -575,7 +576,9 @@ html{
   min-height: 1200px;
   height: 100%
 }
-
+.public-blog-wrapper a{
+  text-decoration: none;
+}
 .public-title {
   color: #27486B;
   font-size: 42px;
@@ -623,11 +626,78 @@ html{
   font-weight: bold;
 }
 
+/* Blog Details Page */
+.blog-details-wrapper{
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+  max-width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(rgba(63, 63, 63, 0.5), rgba(63, 63, 63, 0.5)), url('/src/assests/blog-design.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Inter', sans-serif;
+}
+
+.blog-details {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  
+  margin: 40px;
+  text-align: center;
+  background-color: #e5e5e5ae; 
+  border-radius: 5px;
+  margin-bottom: 100px;
+  
+ 
+}
+
+.blog-details h2 {
+  margin-top: 0;
+  margin-block: 20px;
+  color: #27486B;
+  font-size: 40px;
+}
+
+.blog-details p {
+  color: #27486B;
+  
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 15px;
+  line-height: 24px;
+  height: fit-content;
+  word-wrap: break-word;
+  text-indent: 2em;
+
+}
+
+.blog-details-img{
+  margin: 10px;
+  /* flex: 0 0 365px; */
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-details-img img{
+  max-width: 100%;
+    height: auto;
+}
+
 /* FOOTER  */
 .footer{
   background-color: #27486B;
   width: 100vw;
   padding-block: 5px;
+  position: fixed;
+  bottom: 0;
 }
 
 .footer__content{
@@ -750,9 +820,8 @@ html{
     margin-block: 5px;
   }
   #member{
-    font-size: 23px;
-    margin: 0;
-    top: 20%;
+    font-size: 20px;
+    
   }
   .auth-container h1{
     font-size: 40px;

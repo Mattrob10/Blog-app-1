@@ -8,8 +8,7 @@ export default function AuthForm(props) {
     errMsg,
     showConfirmPassword = true,
     inputs: { username, password, confirmPassword },
-    memberLoginElement,
-    memberRegisterElement,
+    toggleForm, // Add toggleForm function as a prop
   } = props;
 
   return (
@@ -37,10 +36,19 @@ export default function AuthForm(props) {
           placeholder="Confirm Password"
         />
       )}
+      {errMsg && <p id="errMsg">{errMsg}</p>} {/* Render the error message here */}
       <button className="form-btn">{btnText}</button>
-      <p id="errMsg">{errMsg}</p>
-      {memberLoginElement && memberLoginElement}
-      {memberRegisterElement && memberRegisterElement}
+      <p onClick={toggleForm} id="member"> {/* Move the #member <p> here */}
+        {btnText === 'Sign up' ? (
+          <>
+            Already a member...<span id="toggle-msg">LOGIN</span>
+          </>
+        ) : (
+          <>
+            Not a member...<span id="toggle-msg"> REGISTER</span>{' '}
+          </>
+        )}
+      </p>
     </form>
   );
 }

@@ -38,40 +38,34 @@ export default function Auth() {
   }
 
   return (
-    <div className="auth-container">
-      <h1>⛰ Bloggin</h1>
-      {!toggle ? (
-        <>
-          <AuthForm
-            handleChange={handleChange}
-            handleSubmit={handleSignup}
-            inputs={inputs}
-            btnText="Sign up"
-            errMsg={errMsg}
-            memberLoginElement={
-              <p onClick={toggleForm} id="member">
-                Already a member...<span id="toggle-msg">LOGIN</span>
-              </p>
-            }
-          />
-        </>
-      ) : (
-        <>
-          <AuthForm
-            handleChange={handleChange}
-            handleSubmit={handleLogin}
-            inputs={inputs}
-            btnText="Login"
-            errMsg={errMsg}
-            showConfirmPassword={false}
-            memberRegisterElement={
-              <p onClick={toggleForm} id="member">
-                Not a member...<span id="toggle-msg"> REGISTER</span>{' '}
-              </p>
-            }
-          />
-        </>
-      )}
-    </div>
+    <>
+      <div className="auth-container">
+        <h1>⛰ Bloggin</h1>
+        {!toggle ? (
+          <>
+           <AuthForm
+          handleChange={handleChange}
+          handleSubmit={handleLogin}
+          inputs={inputs}
+          btnText="Login"
+          errMsg={errMsg}
+          showConfirmPassword={false}
+          toggleForm={toggleForm} // Pass the toggleForm function as a prop
+        />
+      </>
+        ) : (
+      <>
+         <AuthForm
+          handleChange={handleChange}
+          handleSubmit={handleSignup}
+          inputs={inputs}
+          btnText="Sign up"
+          errMsg={errMsg}
+          toggleForm={toggleForm}
+        />
+          </>
+        )}
+      </div>
+    </>
   );
 }

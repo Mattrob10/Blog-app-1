@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../context/UserProvider';
-import Blog from './Blog';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { AiOutlineLeft, AiOutlineRight} from 'react-icons/ai';
-
-
+import Blog from './Blog';
 
 export default function Public() {
-  const { publicBlogs, setPublicBlogs,  } = useContext(UserContext);
+  const { publicBlogs, setPublicBlogs, token } = useContext(UserContext);
   const [currentPage, setCurrentPage] = useState(1);
   const blogsPerPage = 5;
 
@@ -31,8 +30,7 @@ export default function Public() {
   const handlePageClick = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-  
-  
+
   return (
     <div className='public'>
       <div className='public-title'>Welcome to ⛰<span>Bloggin!</span></div>
@@ -43,48 +41,49 @@ export default function Public() {
       <div className='public-title-text'>Enjoy!</div>
       <div className='public-blog-wrapper'>
         {currentBlogs?.map((blog) => (
-          <Blog
-            key={blog._id}
-            blog_id={blog._id}
-            title={blog.title}
-            description={blog.description}
-            imgUrl={blog.imgUrl}
-            username={blog.user.username}
-            createdAt={blog.createdAt}
-            hideButtons={true}
-            hideCreatedBlog={false}
-            likes={blog.likes}
-          />
+          <Link to={token ? `/blog/${blog._id}` : '/auth'} key={blog._id}>
+            <Blog
+              blog_id={blog._id}
+              title={blog.title}
+              description={blog.description}
+              imgUrl={blog.imgUrl}
+              username={blog.user.username}
+              createdAt={blog.createdAt}
+              hideButtons={true}
+              hideCreatedBlog={false}
+              likes={blog.likes}
+            />
+          </Link>
         ))}
       </div>
       {totalPages > 1 && (
-      <div className='public-pagination'>
-        <button
-          onClick={() => handlePageClick(currentPage - 1)}
-          disabled={currentPage === 1}
-          className='public-pagination-btn'
-        >
-          <AiOutlineLeft />
-        </button>
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+        <div className='public-pagination'>
           <button
-            key={page}
-            onClick={() => handlePageClick(page)}
-            className={`public-pagination-btn ${
-              page === currentPage ? 'public-pagination-btn-active' : ''
-            }`}
+            onClick={() => handlePageClick(currentPage - 1)}
+            disabled={currentPage === 1}
+            className='public-pagination-btn'
           >
-            {page}
+            <AiOutlineLeft />
           </button>
-        ))}
-        <button
-          onClick={() => handlePageClick(currentPage + 1)}
-          disabled={currentPage === totalPages}
-          className='public-pagination-btn'
-        >
-          <AiOutlineRight />
-        </button>
-      </div>
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+            <button
+              key={page}
+              onClick={() => handlePageClick(page)}
+              className={`public-pagination-btn ${
+                page === currentPage ? 'public-pagination-btn-active' : ''
+              }`}
+            >
+              {page}
+            </button>
+          ))}
+          <button
+            onClick={() => handlePageClick(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className='public-pagination-btn'
+          >
+            <AiOutlineRight />
+          </button>
+        </div>
       )}
     </div>
   );

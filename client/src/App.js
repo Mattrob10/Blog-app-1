@@ -7,6 +7,8 @@ import Public from "./components/Public.js";
 import ProtectedRoute from "./components/ProtectedRoute.js";
 import { UserContext } from "./context/UserProvider.js";
 import Footer from "./components/Footer.js"
+import BlogDetail from "./components/BlogDetail.js";
+// import BlogList from "./components/BlogList.js";
 export default function App() {
   const { token, logout} = useContext(UserContext);
 
@@ -22,6 +24,7 @@ export default function App() {
 
         { !token && <Route path="/auth" element={<Auth/>}/>}
         { token && <Route path="/auth" element={<Navigate to="/" />} />}
+        { token && <Route path="/blog/:id" element={<BlogDetail />} />}
 
         <Route path="/"
           element={

@@ -28,6 +28,24 @@ blogRouter.get("/user",expressjwt({ secret: process.env.SECRET, algorithms: ['HS
   })
 })
 
+//get one blog
+blogRouter.get('/:blogId', async (req, res, next) => {
+  try {
+    const blogId = req.params.blogId;
+    const blog = await Blog.findById(blogId);
+    console.log(blogId)
+    if (!blog) {
+      return res.status(404).json({ error: 'Blog not found' });
+    }
+    res.status(200).send(blog);
+  } catch (error) {
+    next(error);
+  }
+});
+
+
+
+
 // Add new Blog
 blogRouter.post("/", expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }),(req, res, next) => {
   req.body.user = req.auth._id 
@@ -71,7 +89,6 @@ blogRouter.put("/:blogId", expressjwt({ secret: process.env.SECRET, algorithms: 
 });
 
 
-//LIKE 
 // LIKE
 blogRouter.put('/like/:blogId', expressjwt({ secret: process.env.SECRET, algorithms: ['HS256'] }), async (req, res, next) => {
   try {
